@@ -1,0 +1,570 @@
+$white-color: #fff;
+$primary-color: #ff6310;
+$secondary-color: #fbd8c4;
+$black-color: #0b0b0b;
+$blue-color: #406180;
+$gray-color: #bec3c780;
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    color: $black-color;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+@mixin flex($align: flex-start, $justify: flex-start, $wrap: nowrap) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+}
+
+.app {
+    margin: 0 auto;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/banner.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.heading {
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.desc {
+    line-height: 1.6;
+    padding-top: 2.4rem;
+    font-size: 1.4rem;
+}
+
+.container-fluid {
+    max-width: 1480px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0 auto;
+}
+
+.wrapper {
+    max-width: 1480px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.header {
+    height: 100vh;
+    position: relative;
+}
+
+.logo {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $white-color;
+}
+
+.navbar {
+    @include flex(center, space-between, nowrap);
+    padding-top: 2rem;
+    color: $white-color;
+
+    &__menu {
+        font-size: 2.8rem;
+        cursor: pointer;
+    }
+}
+
+.slider {
+    color: #fff;
+    text-align: center;
+    &__content {
+        font-size: 4.8rem;
+        font-weight: 700;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        span {
+            display: block;
+            font-size: 12rem;
+        }
+    }
+}
+
+.search {
+    &__content {
+        background-color: $white-color;
+        transform: translateY(-50%);
+        @include flex(stretch, space-around, wrap);
+        border-radius: 6px;
+        padding: 3.6rem 4rem;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    }
+
+    &__item {
+        width: calc(25% - 25px);
+        border: 1px solid rgba(0,0,0,0.5);
+        border-radius: 4px;
+        font-size: 1.6rem;
+        padding: 1.2rem 1rem;
+        align-self: center;
+
+        span {
+            float: right;
+        }
+
+        &--button {
+            border-color: $primary-color;
+            background-color: $primary-color;
+            color: $white-color;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+}
+
+.about-us {
+    margin-top: 4rem;
+
+    &__content {
+        @include flex(stretch, space-between, wrap);
+    }
+
+    &__info {
+        width: 55%;
+        padding-top: 6rem;
+    }
+
+    &__image {
+        width: 35%;
+        max-height: 54rem;
+        border-radius: 32px;
+    }
+}
+
+.popular-trips {
+    margin-top: 8rem;
+
+    &__category {
+        margin-top: 3.6rem;
+        width: fit-content;
+    }
+
+    &__cards {
+        margin-top: 2.8rem;
+        @include flex(stretch, space-between, wrap);
+
+        .card {
+            width: 32%;
+        }
+    }
+}
+
+.card {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.2);
+
+    &__image {
+        padding-top: 56%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    &__info {
+        padding: 3.2rem 2.8rem;
+    }
+
+    &__heading {
+        font-size: 1.8rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    &__desc {
+        margin-top: 1.2rem;
+        line-height: 1.8;
+        font-size: 1.2rem;
+    }
+
+    &__read-more {
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin-top: 1.8rem;
+        display: inline-block;
+        text-decoration: none
+    }
+}
+
+.category {
+    width: 100%;
+    @include flex();
+    position: relative;
+    overflow-x: auto;
+    
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 3.2px;
+    //     background-color: $gray-color;
+    //     bottom: 0;
+    // }
+    &__item {
+        color: $blue-color;
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 1.8rem 1rem;
+        padding-right: 6rem;
+        position: relative;
+        border-bottom: 3.2px solid $gray-color;
+
+         &--active::after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 5rem);
+            height: 3.2px;
+            background-color: $gray-color;
+            left: 0;
+            top: 100%;
+            background-color: $primary-color;
+        }
+
+        &:last-child {
+            padding-right: 1rem;
+        }
+
+        p {
+            cursor: pointer;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        // &::after {
+        //     content: "";
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 3.2px;
+        //     background-color: $gray-color;
+        //     bottom: 0;
+        // }
+    }
+}
+
+.photo {
+    margin-top: 8rem;
+    &__image {
+        border-radius: 16%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 100%;
+    }
+    &__main {
+        margin-top: 6rem;
+        padding-top: 540px;
+        border-radius: 20px;
+    }
+    &__list {
+        margin-left: -1rem;
+        @include flex(flex-start, flex-start, wrap);
+    }
+    &__small {
+        margin-top: 1rem;
+        margin-left: 1rem;
+        width: calc(16.6% - 1rem);
+    }
+}
+
+.stay-touch {
+    margin-top: 8rem;
+    padding: 8rem 0;
+    position: relative;
+    background-color: $secondary-color;
+
+    &__content {
+        @include flex(flex-start, space-between, wrap);
+    }
+
+    &__info {
+        width: 40%;
+    }
+
+    &__search {
+        width: 40%;
+        @include flex(stretch);
+        margin: auto 0;
+    }
+
+    &__input {
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding: 1rem 1.6rem;
+        border: 2px solid $gray-color;
+        border-radius: 8px;
+        flex: 1;
+        background-color: rgba($color: $white-color, $alpha: 0.5);
+    }
+
+    &__button {
+        border-color: $primary-color;
+        background-color: $primary-color;
+        color: $white-color;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding: 1.4rem 2.4rem;
+        outline: none;
+    }
+}
+
+.footer {
+    padding-top: 7.2rem;
+    padding-bottom: 3.6rem;
+    &__content {
+        @include flex(center);
+        flex-direction: column;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__logo {
+        color: $primary-color;
+    }
+    &__menu {
+        margin-top: 2.4rem;
+    }
+
+    &__social {
+        margin: 2.4rem 0;
+        @include flex();
+        &-icon {
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            padding: 1.8rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px 2px rgba(0,0,0,0.2);
+            position: relative;
+
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            &--facebook {
+                color: #395693;
+            }
+            &--twitter {
+                color: #27a4d9;
+            }
+            &--linkedin-in {
+                color: #0079b2;
+            }
+        }
+    }
+
+    &__copy-right {
+        font-size: 1.2rem;
+    }
+}
+
+.menu {
+    &-bottom {
+        @include flex();
+
+        &__item {
+            margin-right: 1rem;
+            margin-left: 1rem;
+        }
+
+        &__link {
+            color: $black-color;
+            text-decoration: none;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (max-width: 1239px) {
+}
+  
+@media (max-width: 1023px) {
+    .search {
+        &__content {
+            padding: 2rem 2.4rem;
+        }
+    }
+
+    .stay-touch {
+        &__info {
+            width: 100%;
+        }
+    
+        &__search {
+            margin-top: 2rem;
+            width: 100%;
+        }
+    }
+
+    .about-us {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 739px) {
+    .logo {
+        font-size: 2rem;
+    }
+
+    .navbar {
+        &__menu {
+            font-size: 2rem;
+        }
+    }
+
+    .slider {
+        &__content {
+            font-size: 4rem;
+
+            span {
+                font-size: 10rem;
+            }
+        }
+    }
+
+    .search {
+        &__content {
+            padding-top: 1rem;
+        }
+
+        &__item {
+            margin-top: 1rem;
+            width: calc(50% - 25px);
+        }
+    }
+
+    .about-us {
+        margin-top: 0;
+    
+        &__info {
+            width: 100%;
+            padding-top: 0;
+        }
+    
+        &__image {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 2rem;
+            max-height: 56rem;  
+        }
+    }
+
+    .popular-trips {
+        margin-top: 6rem;
+    
+        &__category {
+            margin-top: 1.2rem;
+        }
+    
+        &__cards {
+            margin-top: 2.8rem;
+    
+            .card {
+                width: 100%;
+                margin-top: 1.8rem;
+
+                &:first-child {
+                    margin-top: 0;  
+                }
+            }
+        }
+    }
+
+    .photo {
+        margin-top: 6rem;
+        &__main {
+            margin-top: 3rem;
+            padding-top: 360px;
+        }
+
+        &__small {
+            width: calc(25% - 1rem);
+        }
+    }
+
+    .stay-touch {
+        margin-top: 6rem;
+    }
+}
+
+@media (max-width: 414px) {
+    .search {
+        &__item {
+            font-size: 1.4rem;
+        }
+    }
+
+    .photo {
+        &__main {
+            padding-top: 340px;
+        }
+
+        &__small {
+            width: calc(33.33% - 1rem);
+        }
+    }
+    .stay-touch {
+        &__input {
+            font-size: 1.6rem;
+        }
+
+        &__button {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+}
+  
+@media (min-width: 1024px) and (max-width: 1239px) {
+}
