@@ -180,6 +180,7 @@ img {
   box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
 }
 .card__image {
+  display: block;
   padding-top: 56%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -190,6 +191,8 @@ img {
   padding: 3.2rem 2.8rem;
 }
 .card__heading {
+  color: #0b0b0b;
+  text-decoration: none;
   font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
@@ -219,7 +222,6 @@ img {
   overflow-x: auto;
 }
 .category__item {
-  color: #406180;
   font-size: 1.6rem;
   font-weight: 700;
   padding: 1.8rem 1rem;
@@ -240,11 +242,15 @@ img {
 .category__item:last-child {
   padding-right: 1rem;
 }
-.category__item p {
-  cursor: pointer;
+.category__item:last-child.category__item--active::after {
+  width: 100%;
 }
 .category__item::-webkit-scrollbar {
   display: none;
+}
+.category__link {
+  color: #406180;
+  text-decoration: none;
 }
 
 .photo {
